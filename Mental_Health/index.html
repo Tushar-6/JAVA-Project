@@ -581,6 +581,7 @@
           </svg>
         </div>
       </div>
+      
 
       <h2 class="card-title">Welcome Back</h2>
       <p class="card-sub">Login to continue your mental health journey</p>
@@ -651,8 +652,8 @@
 
       <!-- Register -->
       <p class="register-row">
-        Don't have an account? <a href="#">Register</a>
-      </p>
+  Don't have an account? <a href="register.html">Register</a>
+</p>
     </div>
   </div>
 
@@ -681,22 +682,52 @@
         : '';
     });
 
-    function handleLogin() {
-      const email = document.getElementById('emailInput').value;
-      const pw = document.getElementById('pwInput').value;
-      const btn = document.querySelector('.btn-login');
-      if (!email || !pw) {
-        btn.style.background = 'linear-gradient(90deg,#ef4444,#f97316)';
-        btn.textContent = 'Please fill in all fields';
-        setTimeout(() => {
-          btn.style.background = 'linear-gradient(90deg,#7c3aed,#c026d3)';
-          btn.innerHTML = 'Login <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
-        }, 2000);
-        return;
-      }
-      btn.innerHTML = '✓ Logging in...';
-      btn.style.opacity = '0.8';
-    }
+
+function handleLogin() {
+  const email = document.getElementById('emailInput').value;
+  const pw = document.getElementById('pwInput').value;
+  const btn = document.querySelector('.btn-login');
+  
+  // ফিল্ড খালি থাকলে এরর দেখাবে
+  if (!email || !pw) {
+    btn.style.background = 'linear-gradient(90deg,#ef4444,#f97316)';
+    btn.textContent = 'Please fill in all fields';
+    setTimeout(() => {
+      btn.style.background = 'linear-gradient(90deg,#7c3aed,#c026d3)';
+      btn.innerHTML = 'Login <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+    }, 2000);
+    return;
+  }
+  
+  // লগইন সফল হলে ড্যাশবোর্ডে নিয়ে যাবে
+  btn.innerHTML = '✓ Logging in...';
+  btn.style.opacity = '0.8';
+  
+  setTimeout(() => {
+    // একই ফোল্ডারে থাকা dashboard.html পেজে রিডাইরেক্ট করবে
+    window.location.href = 'dashboard.html';
+  }, 800); // ৮০০ মিলিমেকেন্ডের একটি ছোট অ্যানিমেশন ডিলে
+}
+
+    
+
+    // function handleLogin() {
+    //   const email = document.getElementById('emailInput').value;
+    //   const pw = document.getElementById('pwInput').value;
+    //   const btn = document.querySelector('.btn-login');
+    //   if (!email || !pw) {
+    //     btn.style.background = 'linear-gradient(90deg,#ef4444,#f97316)';
+    //     btn.textContent = 'Please fill in all fields';
+    //     setTimeout(() => {
+    //       btn.style.background = 'linear-gradient(90deg,#7c3aed,#c026d3)';
+    //       btn.innerHTML = 'Login <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+    //     }, 2000);
+    //     return;
+    //   }
+    //   btn.innerHTML = '✓ Logging in...';
+    //   btn.style.opacity = '0.8';
+      
+    // }
   </script>
 </body>
 </html>
